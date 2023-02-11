@@ -1,0 +1,36 @@
+mat-grid-tile {
+ background-color:  rgb(96, 169, 193);
+ //color: white;
+ font-size: large;
+ border: 2px solid rgb(6, 114, 151);
+ border-radius: 10%;
+ border-bottom: 5px solid rgb(6, 114, 151);
+}
+.main{
+  width: 25%;
+  margin: auto;
+  padding: 30px;
+  text-align: center;
+  border: 5px solid rgb(96, 169, 193);
+  border-radius: 5%;
+  margin-top: 30px;
+  box-shadow: 4px 6px 8px 6px #80808042;
+}
+
+input{
+  width: 200px;
+  margin: 10px 0px;
+  border: 2px solid rgb(96, 169, 193);
+  border-radius: 6%;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.sucess{
+  color: green;
+  padding: 10px;
+}
+.warning{
+  color: red;
+  padding: 10px;
+}

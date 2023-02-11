@@ -1,0 +1,23 @@
+<mat-grid-list cols="2" rowHeight="400px">
+  <mat-grid-tile
+  *ngFor= "let worksheet of this.weekTotal"
+  >
+  <mat-card class="example-card">
+  <mat-card-title>{{worksheet.title}}</mat-card-title>
+  <mat-card-subtitle>Total Hours: {{worksheet.time}}</mat-card-subtitle>
+  <mat-divider inset style="background-color:rgb(24, 79, 98);"></mat-divider>
+  <mat-card-content>
+    <p>{{worksheet.mon}} </p>
+    <p>{{worksheet.tue}}</p>
+    <p>{{worksheet.wen}}</p>
+    <p>{{worksheet.thu}}</p>
+    <p>{{worksheet.fri}}</p>
+    <p>{{worksheet.sat}}</p>
+    <p>{{worksheet.sun}}</p>
+  </mat-card-content>
+  <!-- <mat-card-actions>
+    <button [routerLink]="['/timecardsDetail', timecard.index]" mat-button style="background-color: rgb(24, 79, 98); color: white;" (click)="viewHandler(timecard.index)">View</button>
+  </mat-card-actions> -->
+</mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

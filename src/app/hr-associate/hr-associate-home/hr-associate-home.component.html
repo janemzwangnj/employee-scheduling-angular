@@ -1,0 +1,16 @@
+<ul>
+  <li>
+    <a routerLink="scheduling">Scheduling</a>
+  </li>
+  <li>
+    <a routerLink="status">Changing Status</a>
+  </li>
+  <li>
+    <a routerLink="timecard">Changing Timecard</a>
+  </li>
+  <li *ngIf="auth.manager">
+    <a routerLink="request">Proving Requests</a>
+  </li>
+</ul>
+<p>hr associate home </p>
+<router-outlet></router-outlet>

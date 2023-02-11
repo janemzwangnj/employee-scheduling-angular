@@ -1,0 +1,19 @@
+<div class="main">
+  <h1>Clock In / Clock Out</h1>
+  <p *ngIf="missingPunch" class="warning">{{missingPunch}}</p>
+  <p>Employee ID: </p>
+  <input matInput type="text" [(ngModel)]="text">
+
+  <mat-grid-list cols="3" rowHeight="80px">
+    <mat-grid-tile
+        *ngFor="let tile of tiles"
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+        [style.background]="tile.color"
+        (click)="clickHandler(tile.text)">
+      {{tile.text}}
+    </mat-grid-tile>
+  </mat-grid-list>
+  <p *ngIf="punchIn" class="sucess">{{punchIn}}</p>
+  </div>
+

@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
+  <a class="navbar-brand" href="#">{{title}}</a>
+  <button class="navbar-toggler" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="!auth.user&&!auth.hr" class="nav-link" routerLinkActive="active" routerLink="/clockinout">Clock In/Out</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="auth.user" class="nav-link" routerLinkActive="active" routerLink="/worksheet">Schedule</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="auth.user" class="nav-link" routerLinkActive="active" routerLink="/timecards">TimeCards</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="auth.user" class="nav-link" routerLinkActive="active" routerLink="/timeoff">Time Off</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="auth.user" class="nav-link" routerLinkActive="active" routerLink="/profile">Profile</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a *ngIf="auth.hr" class="nav-link" routerLinkActive="active" routerLink="/schedules">Schedules</a>
+      </li> -->
+        <!-- <li class="nav-item">
+        <a *ngIf="auth.user" class="nav-link" routerLinkActive="active" routerLink="/associate">Associate</a>
+      </li> -->
+      <li class="nav-item">
+        <a *ngIf="auth.hr" class="nav-link" routerLinkActive="active" routerLink="/scheduling">Scheduling</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a *ngIf="auth.hr" class="nav-link" routerLinkActive="active" routerLink="/modifytimecard">Modify TimeCard</a>
+      </li> -->
+      <!-- <li class="nav-item">
+        <a *ngIf="auth.hr" class="nav-link" routerLinkActive="active" routerLink="/changestatus">Change Status</a>
+      </li> -->
+      <li class="nav-item">
+        <a *ngIf="auth.hr" class="nav-link" routerLinkActive="active" routerLink="/requests">Requests</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="auth.hr" class="nav-link" routerLinkActive="active" routerLink="/associates">All Associates</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a *ngIf="auth.hr" class="nav-link" routerLinkActive="active" routerLink="/hr-associate">Hr Associate</a>
+      </li> -->
+    </ul>
+    <ul class="navbar-nav ms-auto" style="margin-right:50px;">
+      <li class="nav-item" >
+      <a *ngIf="!auth.user && !auth.hr;else logoutTemplate"  class="nav-link" routerLinkActive="active" routerLink="/login">Login</a>
+      <ng-template #logoutTemplate> 
+        <a (click)="auth.logout()" class="nav-link" routerLinkActive="active" routerLink="/home" ><span style="color: white;">Hi, {{auth.user?.username||auth.hr?.username}}!</span> &nbsp;&nbsp; Logout</a>
+      </ng-template>
+    </ul>
+  </div>
+</nav>

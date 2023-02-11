@@ -1,0 +1,24 @@
+
+.home {
+  align-items: center;
+  box-shadow: 4px 6px 8px 6px #80808042;
+}
+
+.example-card {
+  max-width: 400px;
+  margin: auto;
+}
+
+.example-header-image {
+  background-image: url('http://cdn.thinglink.me/api/image/641995210590519296/640/10/scaletowidth');
+  background-size: cover;
+}
+
+table {
+  width: 80%;
+  margin: auto;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}

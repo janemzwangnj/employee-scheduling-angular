@@ -1,0 +1,101 @@
+
+  <mat-tab-group  mat-align-tabs="end">
+  <mat-tab label="Current Associates"> 
+  <div class="top">Current Associates: </div>
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+    class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+      <!-- UserID -->
+    </th>
+    <td mat-cell *matCellDef="let element"> 
+      <button style="margin-left: 10px; border:none;color: red;" (click)="removeHandler(element.id!)">x</button>
+      <!-- {{element.id}}  -->
+    </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+      Name
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef sortActionDescription="Sort by role">
+      Role
+    <td mat-cell *matCellDef="let element"> {{element.role}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"> <button></button></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-tab>
+  <mat-tab label="Add/Reset Associate"> 
+    <!-- <div class="top">New Associate: </div> -->
+    <div fxLayout fxLayoutAlign="center" style="margin: 50px 50px;">
+      <mat-card fxLayout="column" fxFlex="1 1 50%" fxFlex.lt-sm="1 1 auto">
+        <mat-card-title>Add/Reset Associate</mat-card-title>
+        <form 
+          fxLayout="column"
+          [formGroup]="registerFormInstance"
+          >
+          <mat-form-field>
+            <mat-placeholder>Username</mat-placeholder>
+            <input type="text" matInput formControlName="username">
+            <mat-error *ngIf="registerFormInstance.get('username')?.getError('required')">username is required!</mat-error>
+            <mat-error *ngIf="registerFormInstance.get('username')?.getError('minlength')">username must have more than 2 characters long!</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-placeholder>Role</mat-placeholder>
+            <input type="text" matInput formControlName="role">
+          </mat-form-field>
+          <div fxLayout="column" formGroupName="passwordGroup">
+            <mat-form-field>
+              <mat-placeholder>Password</mat-placeholder>
+              <input type="password" matInput formControlName="password">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-placeholder>Confirm Password</mat-placeholder>
+              <input type="password" matInput formControlName="confirm">
+            </mat-form-field>
+            <mat-error>{{registerFormInstance.get('passwordGroup')?.getError('passwordNotMatch')}}</mat-error>
+          </div>
+          <p>
+            <button mat-raised-button color="primary" style="background-color: #184f62;" (click)="submitHandler(registerFormInstance)">Add</button>
+            <button mat-button mat-raised-button color="primary" style="background-color: #184f62; margin-left: 50px;" (click)="resetHandler(registerFormInstance)">Reset</button>
+          </p>
+          <!-- <p>{{registerFormInstance.value | json}}</p> -->
+        </form>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="Remove Associate"> 
+    <div class="top">Remove Associate: </div>
+
+    <mat-grid-list cols="5" rowHeight="200px">
+      <mat-grid-tile
+      *ngFor= "let user of this.users">
+        <mat-card class="example-card">
+          <mat-card-content>
+            <div mat-card-avatar class="example-header-image"></div>
+            <p>Username: {{user.username}}</p>
+            <p>User Id: {{user.id}}</p>
+          </mat-card-content>
+          <mat-divider inset></mat-divider>
+          <mat-card-actions>
+            <button mat-button mat-raised-button color="primary" style="background-color: #d65656; size:5px;" (click)="removeHandler(user.id!)">Remove</button>
+            <button mat-button color="primary" style="background-color: #f1f666; size:6px;">ResetPw</button>
+          </mat-card-actions>
+          <mat-card-footer>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </mat-card-footer>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+</mat-tab-group>
+
+
+
+

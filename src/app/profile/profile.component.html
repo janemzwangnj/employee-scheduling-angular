@@ -1,0 +1,54 @@
+<mat-tab-group mat-align-tabs="end">
+  <mat-tab label="Profile">
+    <div fxLayout fxLayoutAlign="center" style="margin: 50px 50px;">
+      <mat-card fxLayout="column" fxFlex="1 1 50%" fxFlex.lt-sm="1 1 auto">
+        <mat-card-title>My Info</mat-card-title>
+        <form 
+          fxLayout="column"
+          [formGroup]="registerFormInstance"
+          (ngSubmit)="submitHandler(registerFormInstance)"
+          >
+          <mat-form-field>
+            <mat-placeholder>Name</mat-placeholder>
+            <input type="text" matInput formControlName="name">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-placeholder>Phone</mat-placeholder>
+            <input type="text" matInput formControlName="phone">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-placeholder>Email</mat-placeholder>
+            <input type="text" matInput formControlName="email">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-placeholder>Address</mat-placeholder>
+            <input type="text" matInput formControlName="address">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-placeholder>City</mat-placeholder>
+            <input type="text" matInput formControlName="city">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-placeholder>State</mat-placeholder>
+            <input type="text" matInput formControlName="state">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-placeholder>Zip</mat-placeholder>
+            <input type="text" matInput formControlName="zip">
+          </mat-form-field>
+          <p>
+            <button type="submit" mat-raised-button color="primary" style="background-color: #184f62;">Submit</button>
+          </p>
+          <!-- <p>{{registerFormInstance.value | json}}</p> -->
+        </form>
+      </mat-card>
+    </div>
+
+  </mat-tab>
+  <mat-tab label="Change Password">
+    change password form is here!
+  </mat-tab>
+</mat-tab-group>
+
+
+

@@ -1,0 +1,66 @@
+<div fxLayout fxLayoutAlign="center" style="margin: 50px 50px;">
+  <mat-card fxLayout="column" fxFlex="1 1 50%" fxFlex.lt-sm="1 1 auto">
+    <mat-card-title>New Associate</mat-card-title>
+    <form 
+      fxLayout="column"
+      [formGroup]="registerFormInstance"
+      (ngSubmit)="submitHandler(registerFormInstance)"
+      >
+      <mat-form-field>
+        <mat-placeholder>Username</mat-placeholder>
+        <input type="text" matInput formControlName="username">
+        <mat-error *ngIf="registerFormInstance.get('username')?.getError('required')">username is required!</mat-error>
+        <mat-error *ngIf="registerFormInstance.get('username')?.getError('minlength')">username must have more than 2 characters long!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-placeholder>Role</mat-placeholder>
+        <input type="text" matInput formControlName="role">
+      </mat-form-field>
+      <!-- <mat-form-field>
+        <mat-placeholder>Name</mat-placeholder>
+        <input type="text" matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-placeholder>Phone</mat-placeholder>
+        <input type="text" matInput formControlName="phone">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-placeholder>Email</mat-placeholder>
+        <input type="text" matInput formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-placeholder>Address</mat-placeholder>
+        <input type="text" matInput formControlName="address">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-placeholder>City</mat-placeholder>
+        <input type="text" matInput formControlName="city">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-placeholder>State</mat-placeholder>
+        <input type="text" matInput formControlName="state">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-placeholder>Zip</mat-placeholder>
+        <input type="text" matInput formControlName="zip">
+      </mat-form-field>
+ -->
+
+      <div fxLayout="column" formGroupName="passwordGroup">
+        <mat-form-field>
+          <mat-placeholder>Password</mat-placeholder>
+          <input type="password" matInput formControlName="password">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-placeholder>Confirm Password</mat-placeholder>
+          <input type="password" matInput formControlName="confirm">
+        </mat-form-field>
+        <mat-error>{{registerFormInstance.get('passwordGroup')?.getError('passwordNotMatch')}}</mat-error>
+      </div>
+      <p>
+        <button type="submit" mat-raised-button color="primary" style="background-color: #184f62;">Submit</button>
+      </p>
+      <!-- <p>{{registerFormInstance.value | json}}</p> -->
+    </form>
+  </mat-card>
+</div>
